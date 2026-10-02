@@ -4,14 +4,18 @@ import { getDatabase } from "firebase-admin/database";
 
 const projectId =
   process.env.FIREBASE_ADMIN_PROJECT_ID ||
-  process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID;
+  process.env.NEXT_PUBLIC_FIREBASE_PROJECT_ID ||
+  "galaxybets-3e439";
 
-const databaseURL = process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL;
+const databaseURL =
+  process.env.NEXT_PUBLIC_FIREBASE_DATABASE_URL ||
+  "https://galaxybets-3e439-default-rtdb.firebaseio.com";
+
 const clientEmail = process.env.FIREBASE_ADMIN_CLIENT_EMAIL;
 const rawPrivateKey = process.env.FIREBASE_ADMIN_PRIVATE_KEY;
 
 const credential =
-  projectId && clientEmail && rawPrivateKey
+  clientEmail && rawPrivateKey
     ? cert({
         projectId,
         clientEmail,
@@ -23,8 +27,8 @@ const adminApp =
   getApps()[0] ??
   initializeApp({
     ...(credential ? { credential } : {}),
-    ...(projectId ? { projectId } : {}),
-    ...(databaseURL ? { databaseURL } : {}),
+    projectId,
+    databaseURL,
   });
 
 export const adminAuth = getAuth(adminApp);
