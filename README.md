@@ -28,3 +28,5 @@ The Firebase Admin service-account key pasted into chat must be revoked. Create 
 
 ## Demo credits
 1 GC = 100 internal units. New registered accounts are provisioned server-side with 10,000 GC on their first authenticated wallet/game request.
+
+Deployment sync: RTDB Admin transaction typing fixes are included on main.
