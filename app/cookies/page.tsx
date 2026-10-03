@@ -1,0 +1,2 @@
+import Legal from "@/components/legal";
+export default function Cookies(){return <Legal title="Cookies"><p>A necessary, HTTP-only guest cookie identifies your demo account when a signed-in site identity is unavailable. It supports your balance, bets, game sessions, and favorites. It is not used for advertising.</p><p>If you are signed in through the hosting platform, that platform may use its own authentication cookies. Galaxy Bets does not use third-party ad tracking cookies.</p></Legal>}

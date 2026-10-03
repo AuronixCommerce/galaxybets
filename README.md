@@ -1,32 +1,49 @@
 # Galaxy Bets
 
-Premium demo-credit casino-style web app using Next.js, Firebase Authentication, Firebase Realtime Database, and server-authoritative game APIs.
+Galaxy Bets is a responsive, demo-credit gaming platform built with Next.js 16, React 19, Firebase Authentication, Firebase Realtime Database, and server-authoritative game APIs. Galaxy Credits have no cash value; deposits and withdrawals are not implemented.
 
-## Security note
-The Firebase Admin service-account key pasted into chat must be revoked. Create a new key and place it only in server-side environment variables.
+## Included
 
-## Setup
-1. Copy `.env.example` to `.env.local`.
-2. Fill in a NEW Firebase Admin service-account email/private key.
-3. Enable Email/Password in Firebase Authentication.
-4. Publish `database.rules.json` to Firebase Realtime Database.
-5. Run `npm install` then `npm run dev`.
+- Fifteen playable originals: Dice, Crash, Plinko, Towers, Mines, Hi-Lo, Blackjack, Coinflip, Chicken Road, Limbo, Wheel, Keno, Roulette, Baccarat, and Video Poker
+- Email/password registration, verification, password reset, secure five-day server sessions, and sign-out
+- Atomic RTDB wallet and game mutations with integer credit units
+- Live wallet, active-round, and recent-game projections using Firebase listeners
+- HMAC-SHA256 deterministic outcomes, seed commitments, seed rotation, and an instant-game verifier
+- Idempotency payload validation, rate limits, age confirmation, cooling-off periods, and demo-credit resets
+- Single-UID protected admin area and balance-adjustment API
+- Responsive desktop/mobile interface with custom CSS motion and an iOS-style segmented round loader
+- PWA manifest, offline fallback, SEO metadata, legal pages, and direct routes for every game
 
-## Current implemented foundation
-- Firebase Auth client wiring
-- Secure Firebase session-cookie bridge
-- Server-side UID authorization
-- Exact SUPER_ADMIN UID lock
-- RTDB private-account transaction model
-- Demo wallet with integer units
-- Dice server engine + HMAC-SHA256 outcome
-- Coinflip server engine + HMAC-SHA256 outcome
-- Idempotency protection per account/game request
-- Premium responsive casino lobby shell
-- Login/register UI
-- Admin dashboard shell + server authorization
+## Firebase and Vercel setup
 
-## Demo credits
-1 GC = 100 internal units. New registered accounts are provisioned server-side with 10,000 GC on their first authenticated wallet/game request.
+1. Enable Email/Password in Firebase Authentication.
+2. In Firebase Console, generate a new service-account key. Never commit the downloaded JSON or its private key.
+3. Add every variable from `.env.example` to Vercel. Replace only `FIREBASE_ADMIN_PRIVATE_KEY` with the real private key and keep its escaped `\\n` line breaks.
+4. Publish `database.rules.json` to the Realtime Database. With an authenticated Firebase CLI, run `npx firebase-tools deploy --only database`.
+5. Ensure the Firebase Authentication authorized domains include the production Vercel domain.
+6. Deploy the `main` branch on Vercel.
 
-Deployment sync: RTDB Admin transaction typing fixes are included on main.
+The Firebase web API key is intentionally public client configuration. `FIREBASE_ADMIN_PRIVATE_KEY` is the credential that must remain server-only.
+
+## Local development
+
+```bash
+cp .env.example .env.local
+npm install
+npm run dev
+```
+
+Quality checks:
+
+```bash
+npm run typecheck
+npm run lint
+npm test
+npm run build
+```
+
+## Data and security model
+
+One GC equals 100 integer units. A new account begins with 10,000 GC. The browser cannot write wallets, bets, or sessions directly. Authenticated API routes execute the authoritative outcome and mutate the complete private account inside an RTDB transaction. The client may only read its own safe projections; active games never expose mine locations, tower traps, decks, or hidden dealer cards.
+
+This repository is a demo-credit product, not a licensed real-money gambling system.

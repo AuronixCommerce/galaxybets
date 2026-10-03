@@ -1,0 +1,2 @@
+import Link from "next/link";
+export default function Legal({title,children}:{title:string;children:React.ReactNode}){return <main style={{minHeight:"100vh",maxWidth:800,margin:"auto",padding:"50px 22px",color:"#eef2ff",lineHeight:1.65}}><Link href="/" style={{color:"#b999ff",fontWeight:800,textDecoration:"none"}}>◉ GALAXY BETS</Link><h1 style={{fontSize:38,margin:"28px 0 14px"}}>{title}</h1><div style={{color:"#afbed9"}}>{children}</div><p style={{marginTop:38}}><Link href="/" style={{color:"#b999ff"}}>Back to games</Link></p></main>}

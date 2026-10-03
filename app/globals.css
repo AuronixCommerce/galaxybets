@@ -1,0 +1,45 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "../vendor/shadcn-tailwind-4.13.0.css";
+:root {
+  color-scheme:dark;
+  --background:#090d1b;--foreground:#f5f7ff;
+  --card:#111a30;--card-foreground:#f5f7ff;
+  --popover:#14203b;--popover-foreground:#f5f7ff;
+  --primary:#a477ff;--primary-foreground:#0b0d1c;
+  --secondary:#1c2844;--secondary-foreground:#e8edff;
+  --muted:#17223a;--muted-foreground:#9daac8;
+  --accent:#223653;--accent-foreground:#f5f7ff;
+  --destructive:#ff687f;--border:#2c3b58;--input:#263550;--ring:#a477ff;
+  --radius:.9rem;--sidebar:#0e1528;--sidebar-foreground:#f5f7ff;
+  --sidebar-primary:#a477ff;--sidebar-primary-foreground:#101426;
+  --sidebar-accent:#1b2843;--sidebar-accent-foreground:#f5f7ff;
+  --sidebar-border:#24334f;--sidebar-ring:#a477ff;
+}
+@theme inline {
+  --color-background:var(--background);--color-foreground:var(--foreground);
+  --color-card:var(--card);--color-card-foreground:var(--card-foreground);
+  --color-popover:var(--popover);--color-popover-foreground:var(--popover-foreground);
+  --color-primary:var(--primary);--color-primary-foreground:var(--primary-foreground);
+  --color-secondary:var(--secondary);--color-secondary-foreground:var(--secondary-foreground);
+  --color-muted:var(--muted);--color-muted-foreground:var(--muted-foreground);
+  --color-accent:var(--accent);--color-accent-foreground:var(--accent-foreground);
+  --color-destructive:var(--destructive);--color-border:var(--border);--color-input:var(--input);--color-ring:var(--ring);
+  --color-sidebar:var(--sidebar);--color-sidebar-foreground:var(--sidebar-foreground);
+  --color-sidebar-primary:var(--sidebar-primary);--color-sidebar-primary-foreground:var(--sidebar-primary-foreground);
+  --color-sidebar-accent:var(--sidebar-accent);--color-sidebar-accent-foreground:var(--sidebar-accent-foreground);
+  --color-sidebar-border:var(--sidebar-border);--color-sidebar-ring:var(--sidebar-ring);
+  --radius-sm:.55rem;--radius-md:.7rem;--radius-lg:.9rem;--radius-xl:1.15rem;
+  --font-sans:Arial,Helvetica,sans-serif;
+}
+*{box-sizing:border-box}html{background:#090d1b}body{margin:0;background:#090d1b;color:#f5f7ff;font-family:Arial,Helvetica,sans-serif}button,input,select{font:inherit}button{cursor:pointer}button:disabled{cursor:not-allowed;opacity:.6}::selection{background:#7651c8;color:white}
+
+/* Authentication and administration use the same Galaxy visual language. */
+.authPage{min-height:100vh;display:grid;place-items:center;padding:24px;background:radial-gradient(circle at 50% 12%,#33235480,transparent 38%),#090d1b}
+.authCard{width:min(460px,100%);border:1px solid #3d4a69;border-radius:22px;padding:34px;background:#111a2deb;box-shadow:0 30px 90px #020510a6;backdrop-filter:blur(20px);animation:auth-arrive .45s ease both}
+@keyframes auth-arrive{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.authCard .sectionKicker,.adminPage .sectionKicker{font-size:11px;letter-spacing:.16em;color:#bc99ff;font-weight:800}.authCard h1{margin:14px 0 8px;font-size:clamp(27px,4vw,38px);letter-spacing:-.035em}.authCard p{color:#a9b7d0;line-height:1.55;margin:0 0 23px;font-size:14px}
+.authCard form{display:grid;gap:14px}.authCard label:not(.check){display:grid;gap:7px;color:#bdc9df;font-size:12px;font-weight:750}.authCard input:not([type=checkbox]){height:45px;padding:0 13px;border-radius:10px;border:1px solid #394764;background:#0b1325;color:#fff;outline:none}.authCard input:focus{border-color:#a67cff;box-shadow:0 0 0 3px #a67cff25}.authCard .check{display:flex;align-items:flex-start;gap:9px;font-size:12px;color:#bdc9df;line-height:1.45}.authCard .check input{margin-top:2px;accent-color:#a477ff}.authCard button{min-height:45px;border:0;border-radius:10px;background:linear-gradient(125deg,#b389ff,#91b5ff);color:#101225;font-weight:900;letter-spacing:.035em;cursor:pointer}.authCard button:disabled{opacity:.65}.authCard .forgotLink,.authCard .authBottom{text-align:center;font-size:12px}.authCard .forgotLink{color:#9bb0d3}.authCard .authBottom{margin-top:21px;color:#96a5c1}.authCard a{color:#c7adff}.authCard a:hover{text-decoration:underline}.formError,.formInfo{padding:10px 12px;border-radius:8px;font-size:12px}.formError{color:#ffabb8;background:#45202e;border:1px solid #833b52}.formInfo{color:#a5ede4;background:#164047;border:1px solid #2d7c83}
+.adminPage{min-height:100vh;max-width:1180px;margin:auto;padding:36px 24px;color:#ecf2ff}.adminHero{display:flex;align-items:flex-end;justify-content:space-between;border-bottom:1px solid #2b3852;padding-bottom:25px}.adminHero h1{font-size:clamp(27px,4vw,40px);margin:8px 0}.adminHero p,.adminGrid p{color:#9caac5}.secureBadge{display:flex;align-items:center;gap:8px;border:1px solid #3d6870;border-radius:9px;padding:9px 12px;background:#17333a;color:#8fe6db;font-size:11px;font-weight:900}.adminStats,.adminGrid{display:grid;grid-template-columns:repeat(4,1fr);gap:13px;margin-top:24px}.adminStats>div,.adminGrid section{padding:20px;border:1px solid #2f3c58;border-radius:14px;background:#121c31}.adminStats>div{display:flex;align-items:center;gap:13px}.adminStats svg{color:#b49af3}.adminStats span{display:grid}.adminStats b{font-size:23px}.adminStats small{color:#96a7c6}.adminGrid{grid-template-columns:repeat(3,1fr)}.adminGrid h2{font-size:18px}.adminGrid p{font-size:13px;line-height:1.55}.denied{min-height:100vh;display:grid;align-content:center;justify-items:center;text-align:center;gap:8px;color:#cbd6ed}.denied svg,.denied span{color:#ff91a5}.denied h1{margin:0}
+@media(max-width:760px){.adminStats{grid-template-columns:repeat(2,1fr)}.adminGrid{grid-template-columns:1fr}.adminHero{display:grid;gap:12px}.authCard{padding:25px}}
+@media(prefers-reduced-motion:reduce){.authCard{animation:none}}

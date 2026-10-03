@@ -1,0 +1,2 @@
+"use client";
+export default function ErrorPage({reset}:{error:Error;reset:()=>void}){return <main style={{minHeight:"100vh",display:"grid",placeItems:"center",padding:25,textAlign:"center",background:"#090d1b",color:"#f5f7ff"}}><div><span style={{color:"#b18cf5",fontSize:13,letterSpacing:3}}>GALAXY BETS</span><h1>Something went wrong</h1><p style={{color:"#a8b6d1"}}>The experience is temporarily unavailable.</p><button onClick={reset} style={{border:0,borderRadius:8,padding:"11px 18px",background:"#a477ff",color:"#101322",fontWeight:800}}>Try again</button></div></main>}
